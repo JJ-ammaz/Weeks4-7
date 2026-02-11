@@ -9,7 +9,7 @@ public class Move : MonoBehaviour
     //use this maybe? public bool flipped = true;
 
     float speed = 5f;
-    float duration = 2f;
+    float duration = 1f;
     private bool leftcondition = false;
     private bool rightcondition = false;
 
@@ -22,13 +22,17 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     duration -= Time.deltaTime;   
         //Disallow movement outside border rudementary
         Vector3 newPosition = transform.position;
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         if (screenPos.x < 0 || screenPos.x > Screen.width)
         {
-            speed = speed * -1;
+            if(duration <= 0)
+            {
+                speed = speed * -1;
+            }
+            
         }
 
 
