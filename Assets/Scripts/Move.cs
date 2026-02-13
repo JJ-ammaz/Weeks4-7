@@ -36,7 +36,7 @@ public class Move : MonoBehaviour
             }
             
         }
-
+        //bleh
         if (screenPos.y < 0 || screenPos.y > Screen.height)
         {
             if (duration <= 0)
@@ -64,7 +64,7 @@ public class Move : MonoBehaviour
         }
         if (Keyboard.current.downArrowKey.wasPressedThisFrame)
         {
-            downcondition = true;
+            downcondition = truea
         }
 
         //transform.position += transform.right * Time.deltaTime;
