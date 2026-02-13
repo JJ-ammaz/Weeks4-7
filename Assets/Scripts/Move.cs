@@ -12,6 +12,8 @@ public class Move : MonoBehaviour
     float duration = 1f;
     private bool leftcondition = false;
     private bool rightcondition = false;
+    private bool upcondition = false;
+    private bool downcondition = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,6 +37,14 @@ public class Move : MonoBehaviour
             
         }
 
+        if (screenPos.y < 0 || screenPos.y > Screen.height)
+        {
+            if (duration <= 0)
+            {
+                speed = speed * -1;
+            }
+
+        }
 
         //input movement
         if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
@@ -48,6 +58,14 @@ public class Move : MonoBehaviour
             rightcondition = true;
         }
 
+        if (Keyboard.current.upArrowKey.wasPressedThisFrame)
+        {
+            upcondition = true;
+        }
+        if (Keyboard.current.downArrowKey.wasPressedThisFrame)
+        {
+            downcondition = true;
+        }
 
         //transform.position += transform.right * Time.deltaTime;
         if (Keyboard.current.leftArrowKey.wasReleasedThisFrame)
@@ -64,6 +82,17 @@ public class Move : MonoBehaviour
             rightcondition = false;
         }
 
+        if (Keyboard.current.upArrowKey.wasReleasedThisFrame)
+        {
+            Debug.Log("up release");
+            upcondition = false;
+        }
+        if (Keyboard.current.downArrowKey.wasReleasedThisFrame)
+        {
+            Debug.Log("down release");
+            downcondition = false;
+        }
+
 
         if (leftcondition == true)
         {
@@ -74,6 +103,16 @@ public class Move : MonoBehaviour
         {
             Debug.Log("right condition");
             newPosition.x += speed * Time.deltaTime;
+        }
+        if (upcondition == true)
+        {
+            Debug.Log("up condition");
+            newPosition.y += speed * Time.deltaTime;
+        }
+        if (downcondition == true)
+        {
+            Debug.Log("down condition");
+            newPosition.y += - speed * Time.deltaTime;
         }
 
         transform.position = newPosition;
