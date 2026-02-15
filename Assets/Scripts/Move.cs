@@ -64,7 +64,7 @@ public class Move : MonoBehaviour
         }
         if (Keyboard.current.downArrowKey.wasPressedThisFrame)
         {
-            downcondition = truea
+            downcondition = true;
         }
 
         //transform.position += transform.right * Time.deltaTime;
