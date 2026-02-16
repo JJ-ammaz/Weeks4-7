@@ -2,42 +2,29 @@ using UnityEngine;
 
 public class WallMovement : MonoBehaviour
 {
-    // Reference to the single wall
-    public GameObject wall;
+    // Wall movement PUBLIC so slider can change 
+    public static float moveSpeed = 3f;
 
-    // Wall spawn settings
-    private float spawnX = 10f;
-    private float minHeight = -3f;
-    private float maxHeight = 3f;
-
-    // Wall movement PUBLIC so slider thingysd can change 
-    public float moveSpeed = 3f;
-    private float resetX = -10f;
-
+    // ADDED - timer to destroy wall
+    private float lifeTimer = 0f;
+    private float lifeTime = 10f; // destroy after 5 seconds
     void Start()
     {
-        ResetWall();
+
     }
 
     void Update()
     {
-        // Move wall
-        wall.transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        // Move wall left
+        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
 
-        // If wall goes off left side reset it
-        if (wall.transform.position.x < resetX)
+        // Timer counts up
+        lifeTimer += Time.deltaTime;
+
+        // Destroy wall after lifeTime seconds
+        if (lifeTimer >= lifeTime)
         {
-            ResetWall();
+            Destroy(gameObject);
         }
-    }
-
-    // PUBLIC so restart button can do
-    public void ResetWall()
-    {
-        // Random Y position
-        float randomY = Random.Range(minHeight, maxHeight);
-
-        // Put wall at right side with random height
-        wall.transform.position = new Vector3(spawnX, randomY, 0f);
     }
 }

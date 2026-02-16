@@ -7,10 +7,9 @@ public class UIManager : MonoBehaviour
     public Button restartButton;
     public Slider robotSpeedSlider;
     public Slider wallSpeedSlider;
-    public Move move;
+
     // References to game objects
     public Move robot;
-    public WallMovement wall;
 
     void Start()
     {
@@ -27,13 +26,12 @@ public class UIManager : MonoBehaviour
         robot.speed = robotSpeedSlider.value;
 
         // Update wall speed from slider
-        wall.moveSpeed = wallSpeedSlider.value;
+        WallMovement.moveSpeed = wallSpeedSlider.value;
     }
 
     // Show game over screen
     public void ShowGameOver()
     {
-        
         gameOverPanel.SetActive(true);
 
         // Hide robot
@@ -53,6 +51,5 @@ public class UIManager : MonoBehaviour
         robot.gameObject.SetActive(true);
 
         // Reset wall
-        wall.ResetWall();
     }
 }

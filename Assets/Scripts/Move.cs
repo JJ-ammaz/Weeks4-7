@@ -114,27 +114,21 @@ public class Move : MonoBehaviour
         transform.position = newPosition;
 
         // Check collision with the wall (hopefully ;w;)
-        if (wall.wall.transform.position.x < transform.position.x + 1f &&
-            wall.wall.transform.position.x > transform.position.x - 1f)
+        // Check collision with walls
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
+        for (int i = 0; i < walls.Length; i++)
         {
-            Debug.Log("Wall is at robot X position!");
-
-            // Define the safe gap (adjust these numbers based on your gap size)
-            float gapSize = 3f; // total gap height  !!ADJUST THIS!!!
-            float gapTop = wall.wall.transform.position.y + (gapSize / 2f); // top safe zone
-            float gapBottom = wall.wall.transform.position.y - (gapSize / 2f); // bottom safe zone
-
-            Debug.Log("Gap Top: " + gapTop + " Gap Bottom: " + gapBottom + " Robot Y: " + transform.position.y);
-
-            // If robot is OUTSIDE the gap (too high or too low) it hit the wall
-            if (transform.position.y > gapTop || transform.position.y < gapBottom)
+            if (walls[i].transform.position.x < transform.position.x + 1f &&
+                walls[i].transform.position.x > transform.position.x - 1f)
             {
-                Debug.Log("COLLISION - Robot outside gap!");
-                uiManager.ShowGameOver();
-            }
-            else
-            {
-                Debug.Log("Safe - Robot in gap");
+                float gapSize = 3f;
+                float gapTop = walls[i].transform.position.y + (gapSize / 2f);
+                float gapBottom = walls[i].transform.position.y - (gapSize / 2f);
+
+                if (transform.position.y > gapTop || transform.position.y < gapBottom)
+                {
+                    uiManager.ShowGameOver();
+                }
             }
         }
     }
