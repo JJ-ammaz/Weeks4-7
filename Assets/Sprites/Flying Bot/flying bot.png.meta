@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: a73cf436b11ed194ebda863ccd7e3e41
+guid: a240f33d918208342bc082de6be53038
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1813272262993250906
-    second: tanks_crateAmmo_0
+      213: -4530576956571202864
+    second: flying bot_0
+  - first:
+      213: -3244873072185282793
+    second: flying bot_1
+  - first:
+      213: -9076361256142752754
+    second: flying bot_2
+  - first:
+      213: -8377878514533186743
+    second: flying bot_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tanks_crateAmmo_0
+      name: flying bot_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 50
-        height: 50
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a5f733eb76f5d6e0800000000000000
-      internalID: -1813272262993250906
+      spriteID: 0dac00413482021c0800000000000000
+      internalID: -4530576956571202864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flying bot_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71f6a270225e7f2d0800000000000000
+      internalID: -3244873072185282793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flying bot_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e043e72b6894a0280800000000000000
+      internalID: -9076361256142752754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flying bot_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9434fd101ebcbbb80800000000000000
+      internalID: -8377878514533186743
       vertices: []
       indices: 
       edges: []
@@ -138,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 370bde8434e28f84299ef039909667db
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tanks_crateAmmo_0: -1813272262993250906
+      flying bot_0: -4530576956571202864
+      flying bot_1: -3244873072185282793
+      flying bot_2: -9076361256142752754
+      flying bot_3: -8377878514533186743
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

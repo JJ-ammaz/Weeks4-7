@@ -8,41 +8,36 @@ public class Move : MonoBehaviour
     Vector2 topr;
     //use this maybe? public bool flipped = true;
 
-    float speed = 5f;
+    public float speed = 5f;
     float duration = 1f;
-    private bool leftcondition = false;
-    private bool rightcondition = false;
-    private bool upcondition = false;
-    private bool downcondition = false;
-
+    public bool leftcondition = false;
+    public bool rightcondition = false;
+    public bool upcondition = false;
+    public bool downcondition = false;
+    public WallMovement wall;
+    public UIManager uiManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-     duration -= Time.deltaTime;   
+        duration -= Time.deltaTime;
         //Disallow movement outside border rudementary
         Vector3 newPosition = transform.position;
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         if (screenPos.x < 0 || screenPos.x > Screen.width)
         {
-            if(duration <= 0)
-            {
-                speed = speed * -1;
-            }
-            
+            uiManager.ShowGameOver();
+
         }
         //bleh
         if (screenPos.y < 0 || screenPos.y > Screen.height)
         {
-            if (duration <= 0)
-            {
-                speed = speed * -1;
-            }
+            uiManager.ShowGameOver();
 
         }
 
@@ -62,6 +57,7 @@ public class Move : MonoBehaviour
         {
             upcondition = true;
         }
+
         if (Keyboard.current.downArrowKey.wasPressedThisFrame)
         {
             downcondition = true;
@@ -78,43 +74,68 @@ public class Move : MonoBehaviour
 
         if (Keyboard.current.rightArrowKey.wasReleasedThisFrame)
         {
-            Debug.Log("right release");
+            //Debug.Log("right release");
             rightcondition = false;
         }
 
         if (Keyboard.current.upArrowKey.wasReleasedThisFrame)
         {
-            Debug.Log("up release");
+            //Debug.Log("up release");
             upcondition = false;
         }
         if (Keyboard.current.downArrowKey.wasReleasedThisFrame)
         {
-            Debug.Log("down release");
+            //Debug.Log("down release");
             downcondition = false;
         }
 
 
         if (leftcondition == true)
         {
-            Debug.Log("left condition");
+            //Debug.Log("left condition");
             newPosition.x += -speed * Time.deltaTime;
         }
         if (rightcondition == true)
         {
-            Debug.Log("right condition");
+            //Debug.Log("right condition");
             newPosition.x += speed * Time.deltaTime;
         }
         if (upcondition == true)
         {
-            Debug.Log("up condition");
+            //Debug.Log("up condition");
             newPosition.y += speed * Time.deltaTime;
         }
         if (downcondition == true)
         {
-            Debug.Log("down condition");
-            newPosition.y += - speed * Time.deltaTime;
+            //Debug.Log("down condition");
+            newPosition.y += -speed * Time.deltaTime;
         }
 
         transform.position = newPosition;
+
+        // Check collision with the wall (hopefully ;w;)
+        if (wall.wall.transform.position.x < transform.position.x + 1f &&
+            wall.wall.transform.position.x > transform.position.x - 1f)
+        {
+            Debug.Log("Wall is at robot X position!");
+
+            // Define the safe gap (adjust these numbers based on your gap size)
+            float gapSize = 3f; // total gap height  !!ADJUST THIS!!!
+            float gapTop = wall.wall.transform.position.y + (gapSize / 2f); // top safe zone
+            float gapBottom = wall.wall.transform.position.y - (gapSize / 2f); // bottom safe zone
+
+            Debug.Log("Gap Top: " + gapTop + " Gap Bottom: " + gapBottom + " Robot Y: " + transform.position.y);
+
+            // If robot is OUTSIDE the gap (too high or too low) it hit the wall
+            if (transform.position.y > gapTop || transform.position.y < gapBottom)
+            {
+                Debug.Log("COLLISION - Robot outside gap!");
+                uiManager.ShowGameOver();
+            }
+            else
+            {
+                Debug.Log("Safe - Robot in gap");
+            }
+        }
     }
 }
