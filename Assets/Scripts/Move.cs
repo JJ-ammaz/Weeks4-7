@@ -112,7 +112,7 @@ public class Move : MonoBehaviour
         }
 
         transform.position = newPosition;
-
+        //Put into inspector (Drag the wall into the side thingy)
         // Check collision with the wall (hopefully ;w;)
         // Check collision with walls
         GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");

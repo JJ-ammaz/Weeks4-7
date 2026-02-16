@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    //Drag each into corresponding inspectors
     public GameObject gameOverPanel;
     public Button restartButton;
     public Slider robotSpeedSlider;
