@@ -3,9 +3,9 @@ using UnityEngine;
 public class WallMovement : MonoBehaviour
 {
     // Wall movement PUBLIC so slider can change 
-    public static float moveSpeed = 3f;
+    public float wallspeed = 3f;
 
-    // ADDED - timer to destroy wall
+    // Timer to destroy wall
     private float lifeTimer = 0f;
     private float lifeTime = 10f; // destroy after 5 seconds
     void Start()
@@ -16,7 +16,7 @@ public class WallMovement : MonoBehaviour
     void Update()
     {
         // Move wall left
-        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        transform.position += Vector3.left * wallspeed * Time.deltaTime;
 
         // Timer counts up
         lifeTimer += Time.deltaTime;

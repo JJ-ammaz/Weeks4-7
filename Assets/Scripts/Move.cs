@@ -8,7 +8,7 @@ public class Move : MonoBehaviour
     Vector2 topr;
     //use this maybe? public bool flipped = true;
 
-    public float speed = 5f;
+    public float botspeed = 5f;
     float duration = 1f;
     public bool leftcondition = false;
     public bool rightcondition = false;
@@ -93,22 +93,22 @@ public class Move : MonoBehaviour
         if (leftcondition == true)
         {
             //Debug.Log("left condition");
-            newPosition.x += -speed * Time.deltaTime;
+            newPosition.x += -botspeed * Time.deltaTime;
         }
         if (rightcondition == true)
         {
             //Debug.Log("right condition");
-            newPosition.x += speed * Time.deltaTime;
+            newPosition.x += botspeed * Time.deltaTime;
         }
         if (upcondition == true)
         {
             //Debug.Log("up condition");
-            newPosition.y += speed * Time.deltaTime;
+            newPosition.y += botspeed * Time.deltaTime;
         }
         if (downcondition == true)
         {
             //Debug.Log("down condition");
-            newPosition.y += -speed * Time.deltaTime;
+            newPosition.y += -botspeed * Time.deltaTime;
         }
 
         transform.position = newPosition;

@@ -9,8 +9,11 @@ public class UIManager : MonoBehaviour
     public Slider robotSpeedSlider;
     public Slider wallSpeedSlider;
 
+
     // References to game objects
     public Move robot;
+    public WallSpawner spawner;
+    public WallMovement wall;
 
     void Start()
     {
@@ -24,10 +27,10 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // Update robot speed from slider
-        robot.speed = robotSpeedSlider.value;
+        robot.botspeed = robotSpeedSlider.value;
 
         // Update wall speed from slider
-        WallMovement.moveSpeed = wallSpeedSlider.value;
+        wall.wallspeed = wallSpeedSlider.value;
     }
 
     // Show game over screen
@@ -35,8 +38,23 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
 
+        
+
+        //ADDED - Wall Spawner now turns off so it stops spawning walls when player has died
+        spawner.gameObject.SetActive(false );
+
+        // ADDED - FIx to movement after death on restart. 
+        robot.rightcondition = false;
+        robot.leftcondition = false;
+        robot.upcondition = false;
+        robot.downcondition = false;
+
         // Hide robot
         robot.gameObject.SetActive(false);
+
+        //ADDED - Wall speed going super fast to get all them off screen before player restarts
+
+        wallSpeedSlider.value = 10f;
     }
 
     // Restart game
@@ -46,11 +64,19 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
 
         // Reset robot position
+
         robot.transform.position = new Vector3(0f, 0f, 0f); // change to your spawn pos
 
         // Show robot again
+
         robot.gameObject.SetActive(true);
 
-        // Reset wall
+        // ADDED Toggle spawner again 
+
+        spawner.gameObject.SetActive(true );
+
+        // Reset wall speed
+
+        wallSpeedSlider.value = 3f;
     }
 }

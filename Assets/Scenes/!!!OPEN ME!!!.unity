@@ -1912,6 +1912,8 @@ MonoBehaviour:
   robotSpeedSlider: {fileID: 481697188}
   wallSpeedSlider: {fileID: 1197682211}
   robot: {fileID: 1314797982}
+  spawner: {fileID: 645577584}
+  wall: {fileID: 1584573712053909762, guid: 54007eff84810f54eadfa4587636a712, type: 3}
 --- !u!4 &1005084291
 Transform:
   m_ObjectHideFlags: 0
@@ -2448,7 +2450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed7523b129899245af7033c714cb45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  botspeed: 5
   leftcondition: 0
   rightcondition: 0
   upcondition: 0
